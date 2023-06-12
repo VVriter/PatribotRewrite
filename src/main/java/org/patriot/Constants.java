@@ -11,6 +11,7 @@ public interface Constants {
     //Channel ids
     String LOGGING_CHANNEL_ID = "1117516014935093338";
     String TEXNICAL_SUPPORT_CATEGORY_ID = "1117718523922366464";
+    String TELEGRAM_VIP_CATEGORY_ID = "1117757501723643934";
 
 
     //Role ids
@@ -26,6 +27,7 @@ public interface Constants {
     String AWP_4 = "1117734110560014366";
     String AWP_5 = "1117734128935247984";
     String PUBLIC_1 = "1117734233574752277";
+    String BOOSTER_ROLE_ID = "1117767583551193139";
 
     //Fondy api
     String MERCHANT_ID = "1521980";
