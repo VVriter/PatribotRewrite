@@ -34,7 +34,7 @@ public class FondyClient {
         this.lang = builder.lang;
         this.orderDescription = builder.orderDescription;
 
-        this.orderId = UUID.randomUUID().toString();
+        this.orderId = UUID.randomUUID().toString().substring(0, 10);
     }
 
 
@@ -88,7 +88,7 @@ public class FondyClient {
         }
 
         public Builder setMoneyAmount(String moneyAmount) {
-            this.moneyAmount = moneyAmount;
+            this.moneyAmount = moneyAmount + "00";
             return this;
         }
 

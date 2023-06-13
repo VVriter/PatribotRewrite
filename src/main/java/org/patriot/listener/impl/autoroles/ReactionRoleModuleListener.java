@@ -1,4 +1,4 @@
-package org.patriot.listener.impl;
+package org.patriot.listener.impl.autoroles;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Role;

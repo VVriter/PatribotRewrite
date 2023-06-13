@@ -1,4 +1,4 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.impl.autoroles;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;

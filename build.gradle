@@ -36,4 +36,7 @@ dependencies {
 
     //Opencv lib (for creating images)
     implementation 'org.openpnp:opencv:4.7.0-0'
+
+    //For rcon
+    implementation 'com.github.koraktor:steam-condenser:1.3.9'
 }

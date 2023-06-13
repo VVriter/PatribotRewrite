@@ -1,6 +1,7 @@
 package org.patriot;
 
 public class Logger implements Constants{
+
     public static void log(String tag, Object info) {
         System.out.println("[" + tag.toUpperCase() + "]" + " " + info.toString());
     }
