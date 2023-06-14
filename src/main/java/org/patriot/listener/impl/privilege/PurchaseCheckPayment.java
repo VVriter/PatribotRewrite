@@ -1,7 +1,5 @@
 package org.patriot.listener.impl.privilege;
 
-import com.github.koraktor.steamcondenser.steam.servers.SourceServer;
-import lombok.val;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -22,7 +20,7 @@ import org.patriot.lib.rcon.privilege.Privilege;
 import org.patriot.lib.steam.SteamClient;
 import org.patriot.listener.PatriotListener;
 
-public class PurchasePriviligeCheckPayment extends ListenerAdapter implements PatriotListener, Constants {
+public class PurchaseCheckPayment extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {

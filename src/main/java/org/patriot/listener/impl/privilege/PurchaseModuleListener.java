@@ -12,7 +12,7 @@ import org.patriot.listener.PatriotListener;
 
 import java.util.stream.Stream;
 
-public class PurchasePrivilegeModuleListener extends ListenerAdapter implements PatriotListener, Constants {
+public class PurchaseModuleListener extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {
@@ -51,7 +51,7 @@ public class PurchasePrivilegeModuleListener extends ListenerAdapter implements 
     public static final SelectMenu.Builder privilegeDurationSelectMenu = SelectMenu.create("privilege_duration_select_menu").setPlaceholder("Выберите длительность");
     public static final SelectMenu.Builder privilegeServerSelectMenu = SelectMenu.create("privilege_server_select_menu").setPlaceholder("Выберите сервер");
 
-    public PurchasePrivilegeModuleListener() {
+    public PurchaseModuleListener() {
         Stream.of(privileges).forEach(privilege -> privilegeSelectMenu.addOption(privilege.getName(), privilege.toJson().toString()));
         Stream.of(servers).forEach(server -> privilegeServerSelectMenu.addOption(server.getName(), server.toJson().toString()));
 

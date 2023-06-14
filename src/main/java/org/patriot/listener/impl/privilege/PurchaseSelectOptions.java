@@ -14,7 +14,7 @@ import org.patriot.listener.PatriotListener;
 
 import java.util.List;
 
-public class PurchasePrivilegeSelectOptions extends ListenerAdapter implements PatriotListener, Constants {
+public class PurchaseSelectOptions extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {
@@ -96,9 +96,9 @@ public class PurchasePrivilegeSelectOptions extends ListenerAdapter implements P
 
 
         event.editMessageEmbeds(builder.build()).setComponents(
-                ActionRow.of(PurchasePrivilegeModuleListener.privilegeSelectMenu.build()),
-                ActionRow.of(PurchasePrivilegeModuleListener.privilegeDurationSelectMenu.build()),
-                ActionRow.of(PurchasePrivilegeModuleListener.privilegeServerSelectMenu.build()),
+                ActionRow.of(PurchaseModuleListener.privilegeSelectMenu.build()),
+                ActionRow.of(PurchaseModuleListener.privilegeDurationSelectMenu.build()),
+                ActionRow.of(PurchaseModuleListener.privilegeServerSelectMenu.build()),
                 row
         ).queue();
     }

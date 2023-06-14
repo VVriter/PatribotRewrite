@@ -19,7 +19,7 @@ import org.patriot.listener.PatriotListener;
 
 import java.util.EnumSet;
 
-public class TelegramVipListener extends ListenerAdapter implements PatriotListener, Constants {
+public class TelegramListener extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {

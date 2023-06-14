@@ -1,5 +1,6 @@
 package org.patriot.listener.impl.privilege;
 
+import lombok.SneakyThrows;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
@@ -84,7 +85,8 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
     }
 
 
-    private String getMoneyToPay(Privilege privilege, String duration) throws Exception {
+    @SneakyThrows
+    private String getMoneyToPay(Privilege privilege, String duration) {
         switch (duration) {
             case "1 месяц": return String.valueOf(privilege.getPrice().getMonthPrice());
             case "1 год": return String.valueOf(privilege.getPrice().getYearPrice());
@@ -93,7 +95,8 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
         }
     }
 
-    private Privilege getPrivilegeByName(String name) throws Exception {
+    @SneakyThrows
+    private Privilege getPrivilegeByName(String name) {
         for (Privilege privilege : privileges) {
             if (privilege.getName().equals(name)) return privilege;
         }
@@ -101,10 +104,10 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
         throw new Exception("Privilege " + name + " not found");
     }
 
-    private Server getServerByName(String name) throws Exception {
-        for (Server server : servers) {
+    @SneakyThrows
+    private Server getServerByName(String name) {
+        for (Server server : servers)
             if (server.getName().equals(name)) return server;
-        }
 
         throw new Exception("Server " + name + " not found");
     }

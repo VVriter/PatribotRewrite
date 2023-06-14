@@ -3,35 +3,35 @@ package org.patriot.listener;
 import lombok.Getter;
 import org.patriot.Logger;
 import org.patriot.listener.impl.*;
-import org.patriot.listener.impl.autoroles.GamesRolePickModuleListener;
-import org.patriot.listener.impl.autoroles.GetTwitchRoleButtonListener;
-import org.patriot.listener.impl.autoroles.ReactionRoleModuleListener;
-import org.patriot.listener.impl.privilege.PurchasePrivilegeModuleListener;
-import org.patriot.listener.impl.privilege.PurchasePrivilegeSelectOptions;
+import org.patriot.listener.impl.autoroles.GamesRolePick;
+import org.patriot.listener.impl.autoroles.GetTwitchRoleButton;
+import org.patriot.listener.impl.autoroles.ReactionRoleModule;
+import org.patriot.listener.impl.privilege.PurchaseModuleListener;
+import org.patriot.listener.impl.privilege.PurchaseSelectOptions;
 import org.patriot.listener.impl.privilege.PurchasePrivilegeSteamSet;
-import org.patriot.listener.impl.privilege.PurchasePriviligeCheckPayment;
-import org.patriot.listener.impl.vip.TelegramVipListener;
+import org.patriot.listener.impl.privilege.PurchaseCheckPayment;
+import org.patriot.listener.impl.vip.TelegramListener;
 import java.util.stream.Stream;
 
 public class ListenerManager {
 
     @Getter
     private final Object[] LISTENERS = {
-            new CommandsListener(),
-            new OnUserJoinDmListener(),
-            new SupportModuleListener(),
-            new ReactionRoleModuleListener(),
-            new TelegramVipListener(),
-            new GetTwitchRoleButtonListener(),
-            new StuffLookingModuleListener(),
-            new GamesRolePickModuleListener(),
+            new Commands(),
+            new OnUserJoinDm(),
+            new SupportModule(),
+            new ReactionRoleModule(),
+            new TelegramListener(),
+            new GetTwitchRoleButton(),
+            new StuffLookingModule(),
+            new GamesRolePick(),
 
-            new PurchasePrivilegeModuleListener(),
-            new PurchasePrivilegeSelectOptions(),
+            new PurchaseModuleListener(),
+            new PurchaseSelectOptions(),
             new PurchasePrivilegeSteamSet(),
-            new PurchasePriviligeCheckPayment(),
+            new PurchaseCheckPayment(),
             new EmbedExecutor(),
-            new IssuesModuleListener()
+            new IssuesModule()
     };
 
     public ListenerManager() {

@@ -10,7 +10,7 @@ import org.patriot.listener.PatriotListener;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public class CommandsListener extends ListenerAdapter implements PatriotListener, Constants {
+public class Commands extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.patriot.Constants;
 import org.patriot.listener.PatriotListener;
 
-public class GamesRolePickModuleListener extends ListenerAdapter implements PatriotListener, Constants {
+public class GamesRolePick extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {

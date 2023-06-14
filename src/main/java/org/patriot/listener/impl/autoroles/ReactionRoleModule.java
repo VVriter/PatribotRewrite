@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.patriot.listener.PatriotListener;
 
-public class ReactionRoleModuleListener extends ListenerAdapter implements PatriotListener {
+public class ReactionRoleModule extends ListenerAdapter implements PatriotListener {
 
     @Override
     public String getModuleName() {

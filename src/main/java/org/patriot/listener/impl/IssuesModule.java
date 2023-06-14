@@ -17,7 +17,7 @@ import org.patriot.Constants;
 import org.patriot.listener.PatriotListener;
 import java.awt.*;
 
-public class IssuesModuleListener extends ListenerAdapter implements PatriotListener, Constants {
+public class IssuesModule extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {

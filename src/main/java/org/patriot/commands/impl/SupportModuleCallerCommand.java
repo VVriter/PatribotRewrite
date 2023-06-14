@@ -1,5 +1,6 @@
 package org.patriot.commands.impl;
 
+import lombok.SneakyThrows;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -26,7 +27,6 @@ public class SupportModuleCallerCommand implements PatriotCommand {
     public Permission[] getGrantedPermissions() {
         return new Permission[] { Permission.ADMINISTRATOR };
     }
-
 
 
     private final MessageEmbed[] embeds = {

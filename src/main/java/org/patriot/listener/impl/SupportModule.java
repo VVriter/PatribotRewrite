@@ -21,7 +21,7 @@ import org.patriot.listener.PatriotListener;
 import java.util.EnumSet;
 import java.util.Objects;
 
-public class SupportModuleListener extends ListenerAdapter implements PatriotListener, Constants {
+public class SupportModule extends ListenerAdapter implements PatriotListener, Constants {
 
     @Override
     public String getModuleName() {
