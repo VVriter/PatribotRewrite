@@ -38,7 +38,13 @@ public class Commands extends ListenerAdapter implements PatriotListener, Consta
         Stream.of(Main.getCommandManager().getCOMMANDS())
                 .filter(command -> content.startsWith(PREFIX + command.getName()))
                 .filter(command -> Objects.requireNonNull(event.getMember()).hasPermission(command.getGrantedPermissions()))
-                .forEach(command -> command.invoke(event, content.split("\\s+")));
+                .forEach(command -> {
+                    try {
+                        command.invoke(event, content.split("\\s+"));
+                    } catch (Exception e) {
+                        command.onException(e, event);
+                    }
+                });
 
     }
 

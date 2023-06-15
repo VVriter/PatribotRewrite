@@ -9,4 +9,5 @@ public class Card {
     @Getter private String name;
     @Getter private Emoji emoji;
     @Getter private int value;
+    @Getter private Suit suit;
 }

@@ -6,6 +6,7 @@ import org.patriot.commands.impl.*;
 import org.patriot.commands.impl.autoroles.GamesRolePickCommand;
 import org.patriot.commands.impl.autoroles.ReactionRolesCallerCommand;
 import org.patriot.commands.impl.autoroles.TwichStreamRolePickCommand;
+import org.patriot.commands.impl.minigame.Point;
 import org.patriot.commands.impl.vip.TelegramVipCommand;
 
 import java.util.stream.Stream;
@@ -25,7 +26,8 @@ public class CommandManager {
             new StuffLookingCallerCommand(),
             new GamesRolePickCommand(),
             new PurchasePrivilegeModuleCallerCommand(),
-            new IssuesModuleCallerCommand()
+            new IssuesModuleCallerCommand(),
+            new Point()
     };
 
 

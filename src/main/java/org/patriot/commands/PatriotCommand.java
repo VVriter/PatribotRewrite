@@ -14,7 +14,7 @@ public interface PatriotCommand {
         };
     }
     void invoke(MessageReceivedEvent event, String[] args);
-    default void onException(Exception e) {
+    default void onException(Exception e, MessageReceivedEvent event) {
 
     }
 }
