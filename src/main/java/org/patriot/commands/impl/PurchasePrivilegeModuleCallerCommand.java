@@ -3,6 +3,7 @@ package org.patriot.commands.impl;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
@@ -37,8 +38,6 @@ public class PurchasePrivilegeModuleCallerCommand implements PatriotCommand, Con
                 .setDescription("**```elixir\n#Доброго времени суток, дорогой патриот!" +
                 "\nХотите купить привилегию на лучшем Украинском\nсервере и при этом помочь ЗСУ?```** **```" +
                 "\nТогда купите любую привилегию на проекте \"Патриот\"```**")
-                .addField("MONOBANK","**5408810040520107**",true)
-                .addField("СКИНАМИ","[Ссылка на трейд](https://steamcommunity.com/tradeoffer/new/?partner=1145082347&token=WYctqDjj)",true)
                 .build()
     };
 
@@ -46,7 +45,11 @@ public class PurchasePrivilegeModuleCallerCommand implements PatriotCommand, Con
     public void invoke(MessageReceivedEvent event, String[] args) {
         event.getMessage().delete().queue(action ->
             event.getChannel().sendMessageEmbeds(Arrays.asList(embeds))
-                    .addActionRow(Button.of(ButtonStyle.SECONDARY, "purchase_priviligie_btn", "Приобрести привилегию"))
+                    .addActionRow(
+                            Button.of(ButtonStyle.SECONDARY, "purchase_priviligie_btn", "Приобрести привилегию", Emoji.fromFormatted("<:whatdoitnext_mini:1094989900832571492>")),
+                            Button.of(ButtonStyle.LINK, "https://patriot-csgo.com/shop/", "Купить на сайте", Emoji.fromFormatted("<:8238iconworld:1093455350277087313>")),
+                            Button.of(ButtonStyle.LINK, "https://patriot-csgo.com/oferta/", "Оферта", Emoji.fromFormatted("<:book_mini:1095012831407112222>"))
+                    )
                     .queue()
         );
     }

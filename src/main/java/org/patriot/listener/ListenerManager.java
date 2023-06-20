@@ -34,7 +34,7 @@ public class ListenerManager {
             new EmbedExecutor(),
             new IssuesModule(),
 
-            new Point()
+            //new Point()
     };
 
     public ListenerManager() {

@@ -83,7 +83,6 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
 
                 .queue(tciketChannel ->
                     tciketChannel.sendMessageEmbeds(embed.build())
-                            .setContent("@everyone")
                             .addActionRow(
                                     Button.of(ButtonStyle.DANGER,"reports_close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
                                     Button.of(ButtonStyle.PRIMARY,"reports_open_ticket " + event.getMember().getId(),"Открыть тикет!"),

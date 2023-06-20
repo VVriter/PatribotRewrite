@@ -99,7 +99,7 @@ public class TelegramListener extends ListenerAdapter implements PatriotListener
                                     .setTitle("Запрос создан, нажмите на кнопку ниже, чтобы перейти")
                                     .build()
                     ).addActionRow(Button.of(ButtonStyle.LINK, channel.getJumpUrl(), "Перейти в канал")).setEphemeral(true).queue(action ->
-                            channel.sendMessageEmbeds(builder.build()).setContent("@everyone " + event.getUser().getAsMention())
+                            channel.sendMessageEmbeds(builder.build()).setContent(event.getUser().getAsMention())
                                     .addActionRow(
                                             Button.of(ButtonStyle.DANGER,"tgvip_close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
                                             Button.of(ButtonStyle.PRIMARY,"tgvip_open_ticket " + event.getMember().getId(),"Открыть тикет!"),

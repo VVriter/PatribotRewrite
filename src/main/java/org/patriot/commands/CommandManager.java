@@ -27,7 +27,7 @@ public class CommandManager {
             new GamesRolePickCommand(),
             new PurchasePrivilegeModuleCallerCommand(),
             new IssuesModuleCallerCommand(),
-            new Point()
+            //new Point()
     };
 
 
