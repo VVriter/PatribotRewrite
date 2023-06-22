@@ -1,14 +1,14 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.patriot.Constants;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.awt.*;
 
-public class BoostsEmbedCommand implements PatriotCommand, Constants {
+public class BoostsEmbedCommand implements ChatCommand, Constants {
 
     @Override
     public String getName() {

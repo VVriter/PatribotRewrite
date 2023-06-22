@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.patriot.commands.CommandManager;
 import org.patriot.listener.ListenerManager;
+import org.patriot.repository.UsersRepository;
 
 import java.util.Arrays;
 
@@ -15,6 +16,7 @@ public class Main implements Constants {
     @Getter private static JDA jda;
     @Getter private static ListenerManager listenerManager;
     @Getter private static CommandManager commandManager;
+    @Getter private static UsersRepository usersRepository;
 
 
     public Main() throws InterruptedException {
@@ -24,6 +26,8 @@ public class Main implements Constants {
         commandManager = new CommandManager();
         //Event listeners of discord processes initializing
         listenerManager = new ListenerManager();
+        //Initializing user repository and database to use it in feture
+        usersRepository = new UsersRepository();
 
         //Initializing java discord api
         jda = JDABuilder.createDefault(BOT_TOKEN)

@@ -6,7 +6,6 @@ import org.patriot.listener.impl.*;
 import org.patriot.listener.impl.autoroles.GamesRolePick;
 import org.patriot.listener.impl.autoroles.GetTwitchRoleButton;
 import org.patriot.listener.impl.autoroles.ReactionRoleModule;
-import org.patriot.listener.impl.minigames.Point;
 import org.patriot.listener.impl.privilege.PurchaseModuleListener;
 import org.patriot.listener.impl.privilege.PurchaseSelectOptions;
 import org.patriot.listener.impl.privilege.PurchasePrivilegeSteamSet;
@@ -18,7 +17,7 @@ public class ListenerManager {
 
     @Getter
     private final Object[] LISTENERS = {
-            new Commands(),
+            new CommandsProcessor(),
             new OnUserJoinDm(),
             new SupportModule(),
             new ReactionRoleModule(),
@@ -33,6 +32,8 @@ public class ListenerManager {
             new PurchaseCheckPayment(),
             new EmbedExecutor(),
             new IssuesModule(),
+
+            new TicketButtonsProcessor()
 
             //new Point()
     };

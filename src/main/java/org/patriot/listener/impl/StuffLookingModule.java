@@ -5,21 +5,20 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
-import net.dv8tion.jda.api.events.interaction.component.SelectMenuInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
-import net.dv8tion.jda.api.interactions.components.Modal;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
 import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
+import net.dv8tion.jda.api.interactions.modals.Modal;
 import net.dv8tion.jda.api.interactions.modals.ModalMapping;
 import org.jetbrains.annotations.NotNull;
 import org.patriot.Constants;
 import org.patriot.listener.PatriotListener;
 
 import java.util.EnumSet;
-import java.util.Objects;
 
 public class StuffLookingModule extends ListenerAdapter implements PatriotListener, Constants {
 
@@ -40,13 +39,11 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
             .setTitle("• Открыт набор на роль Админа!")
             .setDescription("<:admin:1040238108035260457><@&978385182849630249> - данная должность отвечает за порядок на сервере и выдает наказания нарушителям.")
             .setColor(3454719)
-            .addField("Что тебя ждет:","" +
-                    "<:bluedot:1040199768774823966> Оплата работы в виде скинов\n" +
+            .addField("Что тебя ждет:","<:bluedot:1040199768774823966> Оплата работы в виде скинов\n" +
                     "<:bluedot:1040199768774823966> Система рангов Администрации\n" +
                     "<:bluedot:1040199768774823966> Возможность получить ценный опыт и карьерный рост\n" +
                     "<:bluedot:1040199768774823966> Уникальная роль в дискорде", false)
-            .addField("Требование:", "" +
-                    "<:bluedot:1040199768774823966> Возрастное ограничение: 15+\n" +
+            .addField("Требование:", "<:bluedot:1040199768774823966> Возрастное ограничение: 15+\n" +
                     "<:bluedot:1040199768774823966> Опыт на других проектах - приветствуется!\n" +
                     "<:bluedot:1040199768774823966> Наиграть на сервере: 35 часов\n" +
                     "<:bluedot:1040199768774823966> Отсутствие Блокировки в сообществе STEAM\n" +
@@ -65,10 +62,9 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
             .setFooter("Если ваша заявка соответствует нашим требованиям, то мы вам напишем!")
             .setImage("https://cdn.discordapp.com/attachments/963699910501367848/1043969475717898390/1231231231.gif").build();
 
-
     @Override
-    public void onSelectMenuInteraction(@NotNull SelectMenuInteractionEvent event) {
-        super.onSelectMenuInteraction(event);
+    public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+        super.onStringSelectInteraction(event);
         if (!event.getSelectMenu().getId().equals("looking_stuff_menu")) return;
 
         switch (event.getValues().get(0)) {
@@ -100,7 +96,11 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
         //Generating ticket message
         StringBuilder buffer = new StringBuilder();
         EmbedBuilder builder = new EmbedBuilder();
-        String stuff = Objects.equals(event.getModalId().split(" ")[2], String.valueOf(1)) ? "администратора" : "ивентмейкера";
+        String stuff;
+
+        if (event.getModalId().contains("eventmaker")) stuff = "инвентера";
+        else stuff = "админа";
+
         builder.setTitle("Запрос от " + event.getUser().getAsTag() + " " + "на должность" + " " + stuff);
 
         for (ModalMapping mapping : event.getValues()) {
@@ -128,11 +128,11 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
                 .queue(ticketChannel ->
                     event.replyEmbeds(new EmbedBuilder().setTitle("Запрос создан, нажмите на кнопку ниже, чтобы перейти").build())
                             .addActionRow(Button.of(ButtonStyle.LINK, ticketChannel.getJumpUrl(), "Перейти в канал")).setEphemeral(true).queue(action ->
-                                   ticketChannel.sendMessageEmbeds(builder.build()).setContent("@everyone")
+                                   ticketChannel.sendMessageEmbeds(builder.build())
                                            .addActionRow(
-                                                   Button.of(ButtonStyle.DANGER,"reports_close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
-                                                   Button.of(ButtonStyle.PRIMARY,"reports_open_ticket " + event.getMember().getId(),"Открыть тикет!"),
-                                                   Button.of(ButtonStyle.DANGER,"reports_delete_ticket", "Удалить тикет")
+                                                   Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
+                                                   Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Открыть тикет!"),
+                                                   Button.of(ButtonStyle.DANGER,"delete_ticket", "Удалить тикет")
                                            )
                                            .queue()
                             )

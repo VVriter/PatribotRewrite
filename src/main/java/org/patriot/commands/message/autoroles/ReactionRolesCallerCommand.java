@@ -1,4 +1,4 @@
-package org.patriot.commands.impl.autoroles;
+package org.patriot.commands.message.autoroles;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -6,13 +6,13 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.entities.emoji.EmojiUnion;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.patriot.Constants;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class ReactionRolesCallerCommand implements PatriotCommand, Constants {
+public class ReactionRolesCallerCommand implements ChatCommand, Constants {
 
     @Override
     public String getName() {
@@ -43,7 +43,7 @@ public class ReactionRolesCallerCommand implements PatriotCommand, Constants {
     };
 
 
-    private final SelectMenu.Builder selectMenu = SelectMenu.create("role_switcher");
+    private final StringSelectMenu.Builder selectMenu = StringSelectMenu.create("role_switcher");
 
     public ReactionRolesCallerCommand() {
         final EmojiUnion emoji = Emoji.fromFormatted("<:9gameicon2:1041414091643834419>");

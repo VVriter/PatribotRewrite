@@ -1,17 +1,16 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
-import lombok.SneakyThrows;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
-import org.patriot.commands.PatriotCommand;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class SupportModuleCallerCommand implements PatriotCommand {
+public class SupportModuleCallerCommand implements ChatCommand {
 
     @Override
     public String getName() {
@@ -49,7 +48,7 @@ public class SupportModuleCallerCommand implements PatriotCommand {
     };
 
 
-    private final SelectMenu.Builder select = SelectMenu.create("reports_module_select_menu");
+    private final StringSelectMenu.Builder select = StringSelectMenu.create("reports_module_select_menu");
 
     public SupportModuleCallerCommand() {
         select.addOption("Жалоба на админа", "1", Emoji.fromFormatted("<:report:1078390433945747559>"));

@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.jetbrains.annotations.NotNull;
 import org.patriot.Constants;
 import org.patriot.lib.rcon.Server;
@@ -47,9 +48,9 @@ public class PurchaseModuleListener extends ListenerAdapter implements PatriotLi
             _public
     };
 
-    public static final SelectMenu.Builder privilegeSelectMenu = SelectMenu.create("privilege_select_menu").setPlaceholder("Выберите привилегию");
-    public static final SelectMenu.Builder privilegeDurationSelectMenu = SelectMenu.create("privilege_duration_select_menu").setPlaceholder("Выберите длительность");
-    public static final SelectMenu.Builder privilegeServerSelectMenu = SelectMenu.create("privilege_server_select_menu").setPlaceholder("Выберите сервер");
+    public static final StringSelectMenu.Builder privilegeSelectMenu  = StringSelectMenu.create("privilege_select_menu").setPlaceholder("Выберите привилегию");
+    public static final StringSelectMenu.Builder privilegeDurationSelectMenu  = StringSelectMenu.create("privilege_duration_select_menu").setPlaceholder("Выберите длительность");
+    public static final StringSelectMenu.Builder privilegeServerSelectMenu  = StringSelectMenu.create("privilege_server_select_menu").setPlaceholder("Выберите сервер");
 
     public PurchaseModuleListener() {
         Stream.of(privileges).forEach(privilege -> privilegeSelectMenu.addOption(privilege.getName(), privilege.toJson().toString()));

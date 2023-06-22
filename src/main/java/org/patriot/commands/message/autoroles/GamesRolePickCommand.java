@@ -1,17 +1,17 @@
-package org.patriot.commands.impl.autoroles;
+package org.patriot.commands.message.autoroles;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.patriot.Constants;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class GamesRolePickCommand implements PatriotCommand, Constants {
+public class GamesRolePickCommand implements ChatCommand, Constants {
 
     @Override
     public String getName() {
@@ -48,7 +48,7 @@ public class GamesRolePickCommand implements PatriotCommand, Constants {
                     .setColor(3553599).build()
     };
 
-    private final SelectMenu.Builder selectMenu = SelectMenu.create("game_role_picker");
+    private final StringSelectMenu.Builder selectMenu = StringSelectMenu.create("game_role_picker");
 
     public GamesRolePickCommand() {
         selectMenu.addOption("Valorant", VALORANT_ROLE_ID, Emoji.fromFormatted("<:9gameicon1:1041414089416654930>"));

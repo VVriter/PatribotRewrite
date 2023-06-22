@@ -1,4 +1,4 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -8,11 +8,11 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
 import org.patriot.Constants;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class PurchasePrivilegeModuleCallerCommand implements PatriotCommand, Constants {
+public class PurchasePrivilegeModuleCallerCommand implements ChatCommand, Constants {
 
     @Override
     public String getName() {
@@ -46,8 +46,8 @@ public class PurchasePrivilegeModuleCallerCommand implements PatriotCommand, Con
         event.getMessage().delete().queue(action ->
             event.getChannel().sendMessageEmbeds(Arrays.asList(embeds))
                     .addActionRow(
-                            Button.of(ButtonStyle.SECONDARY, "purchase_priviligie_btn", "Приобрести привилегию", Emoji.fromFormatted("<:whatdoitnext_mini:1094989900832571492>")),
-                            Button.of(ButtonStyle.LINK, "https://patriot-csgo.com/shop/", "Купить на сайте", Emoji.fromFormatted("<:8238iconworld:1093455350277087313>")),
+                            Button.of(ButtonStyle.SECONDARY, "purchase_priviligie_btn", "Купить привилегию", Emoji.fromFormatted("<:whatdoitnext_mini:1094989900832571492>")),
+                            Button.of(ButtonStyle.LINK, "https://patriot-csgo.com/shop/", "Сайт", Emoji.fromFormatted("<:8238iconworld:1093455350277087313>")),
                             Button.of(ButtonStyle.LINK, "https://patriot-csgo.com/oferta/", "Оферта", Emoji.fromFormatted("<:book_mini:1095012831407112222>"))
                     )
                     .queue()

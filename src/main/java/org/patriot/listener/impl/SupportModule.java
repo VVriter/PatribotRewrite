@@ -5,14 +5,14 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
-import net.dv8tion.jda.api.events.interaction.component.SelectMenuInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
-import net.dv8tion.jda.api.interactions.components.Modal;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
 import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
+import net.dv8tion.jda.api.interactions.modals.Modal;
 import net.dv8tion.jda.api.interactions.modals.ModalMapping;
 import org.jetbrains.annotations.NotNull;
 import org.patriot.Constants;
@@ -34,8 +34,8 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
     }
 
     @Override
-    public void onSelectMenuInteraction(@NotNull SelectMenuInteractionEvent event) {
-        super.onSelectMenuInteraction(event);
+    public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+        super.onStringSelectInteraction(event);
         if (!Objects.equals(event.getSelectMenu().getId(), "reports_module_select_menu")) return;
 
         //I'm just creating modals here for each setting in drop down menu
@@ -49,7 +49,6 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
             case "7": event.replyModal(getModal("Снятие бана",  "Ссылка на стим", "Описание").build()).queue(); break;
         }
     }
-
 
     @Override
     public void onModalInteraction(@NotNull ModalInteractionEvent event) {
@@ -84,9 +83,9 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
                 .queue(tciketChannel ->
                     tciketChannel.sendMessageEmbeds(embed.build())
                             .addActionRow(
-                                    Button.of(ButtonStyle.DANGER,"reports_close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
-                                    Button.of(ButtonStyle.PRIMARY,"reports_open_ticket " + event.getMember().getId(),"Открыть тикет!"),
-                                    Button.of(ButtonStyle.DANGER,"reports_delete_ticket", "Удалить тикет")
+                                    Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
+                                    Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Открыть тикет!"),
+                                    Button.of(ButtonStyle.DANGER,"delete_ticket", "Удалить тикет")
                             )
                             .queue(message -> {
                                         event.replyEmbeds(
@@ -104,56 +103,6 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
     }
 
 
-    @Override
-    public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
-        super.onButtonInteraction(event);
-        //Will be more optimized
-        if (!Objects.requireNonNull(event.getButton().getId()).startsWith("reports_")) return;
-
-        //Check for user can use this button
-        if (canUse(event.getMember(), event)) {
-
-            //Close ticket button handler
-            if (event.getButton().getId().startsWith("reports_close_ticket")) {
-                final String userId = event.getButton().getId().split(" ")[1];
-                try {
-                    final Member member = event.getGuild().getMemberById(userId);
-                    event.getChannel().asTextChannel().getManager().putPermissionOverride(member,null, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL)).queue(action ->
-                            event.reply("Модератор " + event.getMember().getAsMention() + " закрыл тикет.").queue()
-                    );
-                } catch (Exception e) {
-                    event.reply("Произошла ошибка, не удалось получить юзера.").setEphemeral(true).queue();
-                }
-            }
-
-            //Open ticket button handler
-            if (event.getButton().getId().startsWith("reports_open_ticket")) {
-                final String userId = event.getButton().getId().split(" ")[1];
-                try {
-                    final Member member = event.getGuild().getMemberById(userId);
-                    event.getChannel().asTextChannel().getManager().putPermissionOverride(member, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL), null).queue(action ->
-                        event.reply("Модератор  " + event.getMember().getAsMention() + " открыл тикет.").queue()
-                    );
-                } catch (Exception e) {
-                    event.reply("Произошла ошибка, не удалось получить юзера.").setEphemeral(true).queue();
-                }
-            }
-
-
-            //Delete ticket button handler
-            if (event.getButton().getId().startsWith("reports_delete_ticket"))
-                event.getChannel().delete().queue();
-
-
-        } else event.reply("Вы не можете использывать эту кнопку, вы не администратор").setEphemeral(true).queue();
-
-    }
-
-
-    //Check for user can use button
-    private boolean canUse(Member member, ButtonInteractionEvent event) {
-        return member.getRoles().contains(event.getGuild().getRoleById(SUPPORTERS_ROLE_ID)) || member.hasPermission(Permission.ADMINISTRATOR);
-    }
 
 
 

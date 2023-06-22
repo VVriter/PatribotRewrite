@@ -1,16 +1,16 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
-import org.patriot.commands.PatriotCommand;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class StuffLookingCallerCommand implements PatriotCommand {
+public class StuffLookingCallerCommand implements ChatCommand {
     @Override
     public String getName() {
         return "lookingstuff";
@@ -38,7 +38,7 @@ public class StuffLookingCallerCommand implements PatriotCommand {
                     .setImage("https://cdn.discordapp.com/attachments/976095234180120576/1040955398926123089/nabor_c_sstaff_slowversion.gif").build()
     };
 
-    private final SelectMenu.Builder selectMenu = SelectMenu.create("looking_stuff_menu");
+    private final StringSelectMenu.Builder selectMenu = StringSelectMenu.create("looking_stuff_menu");
 
     public StuffLookingCallerCommand() {
         selectMenu.addOption("Администратор","1","Описание роли администратора", Emoji.fromFormatted("<:admin:1040238108035260457>"));

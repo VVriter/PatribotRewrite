@@ -1,4 +1,4 @@
-package org.patriot.commands.impl.autoroles;
+package org.patriot.commands.message.autoroles;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -6,11 +6,11 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.util.Arrays;
 
-public class TwichStreamRolePickCommand implements PatriotCommand {
+public class TwichStreamRolePickCommand implements ChatCommand {
 
     @Override
     public String getName() {

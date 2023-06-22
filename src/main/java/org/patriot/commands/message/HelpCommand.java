@@ -1,13 +1,13 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.patriot.Main;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
 import java.util.stream.Stream;
 
-public class HelpCommand implements PatriotCommand {
+public class HelpCommand implements ChatCommand {
 
     @Override
     public String getName() {
@@ -22,7 +22,7 @@ public class HelpCommand implements PatriotCommand {
     @Override
     public void invoke(MessageReceivedEvent event, String[] args) {
         StringBuffer stringBuffer = new StringBuffer();
-        Stream.of(Main.getCommandManager().getCOMMANDS()).forEach(command -> {
+        Stream.of(Main.getCommandManager().getCHAT_COMMANDS()).forEach(command -> {
             stringBuffer.append("`")
                     .append(command.getName())
                     .append("`")

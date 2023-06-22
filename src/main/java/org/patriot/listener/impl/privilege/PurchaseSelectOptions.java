@@ -2,12 +2,11 @@ package org.patriot.listener.impl.privilege;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.events.interaction.component.SelectMenuInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.patriot.Constants;
 import org.patriot.listener.PatriotListener;
@@ -27,8 +26,8 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
     }
 
     @Override
-    public void onSelectMenuInteraction(@NotNull SelectMenuInteractionEvent event) {
-        super.onSelectMenuInteraction(event);
+    public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+        super.onStringSelectInteraction(event);
         if (event.getSelectMenu().getId().equals("privilege_select_menu")) {
             MessageEmbed embed = event.getMessage().getEmbeds().get(0);
             EmbedBuilder builder = new EmbedBuilder(embed);
@@ -80,7 +79,7 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
     }
 
 
-    private void edit(SelectMenuInteractionEvent event, EmbedBuilder builder) {
+    private void edit(StringSelectInteractionEvent event, EmbedBuilder builder) {
         ActionRow row = null;
 
         JSONObject info = new JSONObject()

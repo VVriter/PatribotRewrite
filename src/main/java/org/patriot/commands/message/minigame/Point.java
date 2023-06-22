@@ -1,4 +1,4 @@
-package org.patriot.commands.impl.minigame;
+package org.patriot.commands.message.minigame;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle;
 import org.patriot.Constants;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 import org.patriot.minegame.CardUtil;
 import org.patriot.minegame.Cards;
 
@@ -15,7 +15,7 @@ import java.util.Collections;
 
 import lombok.val;
 
-public class Point implements PatriotCommand, Constants, Cards {
+public class Point implements ChatCommand, Constants, Cards {
 
     @Override
     public String getName() {

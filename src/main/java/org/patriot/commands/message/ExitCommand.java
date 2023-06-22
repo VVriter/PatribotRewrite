@@ -1,11 +1,11 @@
-package org.patriot.commands.impl;
+package org.patriot.commands.message;
 
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.patriot.Logger;
-import org.patriot.commands.PatriotCommand;
+import org.patriot.commands.ChatCommand;
 
-public class ExitCommand implements PatriotCommand {
+public class ExitCommand implements ChatCommand {
 
     @Override
     public String getName() {

@@ -3,7 +3,7 @@ package org.patriot.commands;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-public interface PatriotCommand {
+public interface ChatCommand {
     String getName();
     default String getDescription() {
         return "Эта команда не имеет описания.";
