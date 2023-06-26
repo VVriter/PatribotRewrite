@@ -2,7 +2,6 @@ package org.patriot.repository;
 
 import lombok.SneakyThrows;
 import org.patriot.Constants;
-import org.patriot.repository.exception.UserNotFoundException;
 import java.sql.*;
 
 public class UsersRepository implements Constants {
@@ -37,7 +36,7 @@ public class UsersRepository implements Constants {
     }
 
 
-    public PatriotUser getUser(String id) throws UserNotFoundException {
+    public PatriotUser getUser(String id) {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              Statement statement = connection.createStatement()) {
              createTableIfNotExists(connection);
@@ -47,13 +46,19 @@ public class UsersRepository implements Constants {
 
             if (resultSet.next()) {
                 int money = resultSet.getInt("money");
-                return new PatriotUser(id, money);
+                int messages = resultSet.getInt("messages");
+
+                return PatriotUser.builder().messagesSented(messages)
+                        .money(money)
+                        .id(id).build();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        throw new UserNotFoundException(id);
+        return PatriotUser.builder().messagesSented(0)
+                .money(0)
+                .id(id).build();
     }
 
     public void addUserMoney(String id, int money) {
@@ -65,15 +70,6 @@ public class UsersRepository implements Constants {
              statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-
-    public boolean isUserExistsInDatabase(String id) {
-        try {
-            getUser(id);
-            return true;
-        } catch (UserNotFoundException e) {
-            return false;
         }
     }
 

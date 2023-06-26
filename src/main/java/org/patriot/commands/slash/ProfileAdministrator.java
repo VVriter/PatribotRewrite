@@ -9,7 +9,6 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.patriot.Main;
 import org.patriot.commands.SlashCommand;
 import org.patriot.repository.PatriotUser;
-import org.patriot.repository.exception.UserNotFoundException;
 
 public class ProfileAdministrator implements SlashCommand {
 
@@ -31,14 +30,8 @@ public class ProfileAdministrator implements SlashCommand {
     @Override
     public void invoke(SlashCommandInteractionEvent event) {
         Member member = event.getOption("юзер").getAsMember();
-        try {
-            PatriotUser user = Main.getUsersRepository().getUser(member.getUser().getId());
-            sendProfileEmbed(event, user, member);
-        } catch (UserNotFoundException e) {
-            PatriotUser patriotUser = new PatriotUser(member.getUser().getId(), 0);
-            Main.getUsersRepository().createUser(patriotUser);
-            sendProfileEmbed(event, patriotUser, member);
-        }
+        PatriotUser user = Main.getUsersRepository().getUser(member.getUser().getId());
+        sendProfileEmbed(event, user, member);
     }
 
     private void sendProfileEmbed(SlashCommandInteractionEvent event, PatriotUser user, Member member) {
