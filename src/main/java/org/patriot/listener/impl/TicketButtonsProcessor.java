@@ -5,10 +5,11 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import org.patriot.Logger;
+import org.patriot.Main;
 import org.patriot.listener.PatriotListener;
 
 import java.util.EnumSet;
-import java.util.Objects;
 
 import static org.patriot.Constants.SUPPORTERS_ROLE_ID;
 
@@ -37,7 +38,12 @@ public class TicketButtonsProcessor extends ListenerAdapter implements PatriotLi
                 try {
                     final Member member = event.getGuild().getMemberById(userId);
                     event.getChannel().asTextChannel().getManager().putPermissionOverride(member,null, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL)).queue(action ->
-                            event.reply("Модератор " + event.getMember().getAsMention() + " закрыл тикет.").queue()
+                            event.reply("Модератор " + event.getMember().getAsMention() + " закрыл тикет.").queue(act ->
+                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " закрыл тикет.\n Инфа о тикете:\n`Имя канала:` " + event.getChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", ""), actioned -> {
+                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", "") + "-закрыт")
+                                                .queue();
+                                    })
+                            )
                     );
                 } catch (Exception e) {
                     event.reply("Произошла ошибка, не удалось получить юзера.").setEphemeral(true).queue();
@@ -50,7 +56,12 @@ public class TicketButtonsProcessor extends ListenerAdapter implements PatriotLi
                 try {
                     final Member member = event.getGuild().getMemberById(userId);
                     event.getChannel().asTextChannel().getManager().putPermissionOverride(member, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL), null).queue(action ->
-                            event.reply("Модератор  " + event.getMember().getAsMention() + " открыл тикет.").queue()
+                            event.reply("Модератор  " + event.getMember().getAsMention() + " открыл тикет.").queue(act ->
+                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " открыл тикет.\n Инфа о тикете:\n`Имя канала:` " + event.getChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", ""), actioned -> {
+                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", "") + "-открыт")
+                                                .queue();
+                                    })
+                            )
                     );
                 } catch (Exception e) {
                     event.reply("Произошла ошибка, не удалось получить юзера.").setEphemeral(true).queue();

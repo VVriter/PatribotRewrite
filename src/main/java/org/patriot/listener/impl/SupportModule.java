@@ -70,7 +70,7 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
                 .setDescription(info.toString());
 
         event.getGuild().getCategoryById(TEXNICAL_SUPPORT_CATEGORY_ID)
-                .createTextChannel(event.getUser().getName() + "-" + "запрос")
+                .createTextChannel(event.getUser().getName() + "-" + "ожидает")
 
 
                 //For @everyone closed channel

@@ -116,7 +116,7 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
 
         //Creating ticket
         event.getGuild().getCategoryById(LOOKING_FOR_STUFF_CATEGORY_ID)
-                .createTextChannel(event.getUser().getName())
+                .createTextChannel(event.getUser().getName() + "-ожидает")
 
                 //For @everyone closed channel
                 .addPermissionOverride(event.getGuild().getPublicRole(),null, EnumSet.of(Permission.VIEW_CHANNEL))

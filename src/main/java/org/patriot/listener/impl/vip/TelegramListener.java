@@ -57,7 +57,7 @@ public class TelegramListener extends ListenerAdapter implements PatriotListener
                 .setDescription(stringBuffer.toString())
                 .setThumbnail(event.getUser().getAvatarUrl());
 
-        event.getGuild().getCategoryById(TELEGRAM_VIP_CATEGORY_ID).createTextChannel(event.getUser().getName() + " ticket")
+        event.getGuild().getCategoryById(TELEGRAM_VIP_CATEGORY_ID).createTextChannel(event.getUser().getName() + "-ожидает")
                 //For @everyone closed channel
                 .addPermissionOverride(event.getGuild().getPublicRole(),null, EnumSet.of(Permission.VIEW_CHANNEL))
                 //For @suppoert role

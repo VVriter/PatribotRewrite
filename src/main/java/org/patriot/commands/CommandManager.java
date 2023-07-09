@@ -8,7 +8,6 @@ import org.patriot.commands.message.autoroles.ReactionRolesCallerCommand;
 import org.patriot.commands.message.autoroles.TwichStreamRolePickCommand;
 import org.patriot.commands.message.vip.TelegramVipCommand;
 import org.patriot.commands.slash.Profile;
-import org.patriot.commands.slash.ProfileAdministrator;
 
 import java.util.stream.Stream;
 
@@ -33,8 +32,7 @@ public class CommandManager {
 
     @Getter
     private SlashCommand[] SLASH_COMMANDS = {
-            new Profile(),
-            new ProfileAdministrator()
+            new Profile()
     };
 
     public CommandManager() {
