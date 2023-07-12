@@ -54,6 +54,6 @@ public class TelegramVipCommand implements ChatCommand {
 
     @Override
     public void invoke(MessageReceivedEvent event, String[] args) {
-        event.getChannel().sendMessageEmbeds(embeds).addActionRow(Button.of(ButtonStyle.SECONDARY, "tgvip", "Забрать Привилегию")).queue();
+        event.getChannel().sendMessageEmbeds(embeds).addActionRow(Button.of(ButtonStyle.SECONDARY, "tgvip", "Отримати Привілегію")).queue();
     }
 }

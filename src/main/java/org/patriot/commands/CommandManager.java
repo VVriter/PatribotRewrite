@@ -18,15 +18,15 @@ public class CommandManager {
     private ChatCommand[] CHAT_COMMANDS = {
             new HelpCommand(),
             new ExitCommand(),
-            new SupportModuleCallerCommand(),
-            new ReactionRolesCallerCommand(),
-            new TelegramVipCommand(),
-            new BoostsEmbedCommand(),
+            new SupportModuleCallerCommand(), //Ukrainized
+            new ReactionRolesCallerCommand(), //Ukrainized
+            new TelegramVipCommand(), //Ukrainized
+            new BoostsEmbedCommand(), //Ukrainized
             new TwichStreamRolePickCommand(),
             new StuffLookingCallerCommand(),
-            new GamesRolePickCommand(),
-            new PurchasePrivilegeModuleCallerCommand(),
-            new IssuesModuleCallerCommand(),
+            new GamesRolePickCommand(), //Ukrainized
+            new PurchasePrivilegeModuleCallerCommand(), //Ukrainized
+            new IssuesModuleCallerCommand(), //Ukrainized
             //new Point()
     };
 
