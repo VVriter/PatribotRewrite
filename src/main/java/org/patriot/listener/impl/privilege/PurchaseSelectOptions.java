@@ -33,7 +33,7 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
             EmbedBuilder builder = new EmbedBuilder(embed);
             List<MessageEmbed.Field> fields = new EmbedBuilder(embed).getFields();
             builder.clearFields();
-            MessageEmbed.Field field = new MessageEmbed.Field("Привилегия", "`" + new JSONObject(event.getValues().get(0)).getString("name") + "`", true);
+            MessageEmbed.Field field = new MessageEmbed.Field("Привілегія", "`" + new JSONObject(event.getValues().get(0)).getString("name") + "`", true);
             builder.addField(field);
             builder.addField(fields.get(1));
             builder.addField(fields.get(2));
@@ -44,16 +44,16 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
         if (event.getSelectMenu().getId().equals("privilege_duration_select_menu")) {
             String val = "";
             switch (event.getValues().get(0)) {
-                case "1": val = "1 месяц";break;
-                case "2": val = "1 год"; break;
-                case "3": val = "Пожизненно";break;
+                case "1": val = "1 місяць";break;
+                case "2": val = "1 рік"; break;
+                case "3": val = "Пожиттєво";break;
             }
 
             MessageEmbed embed = event.getMessage().getEmbeds().get(0);
             EmbedBuilder builder = new EmbedBuilder(embed);
             List<MessageEmbed.Field> fields = new EmbedBuilder(embed).getFields();
             builder.clearFields();
-            MessageEmbed.Field field = new MessageEmbed.Field("Длительность", "`" + val + "`", true);
+            MessageEmbed.Field field = new MessageEmbed.Field("Тривалість", "`" + val + "`", true);
             builder.addField(fields.get(0));
             builder.addField(field);
             builder.addField(fields.get(2));
@@ -88,9 +88,9 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
                 .put("s", builder.getFields().get(2).getValue().replace("`", ""));
 
         if (builder.getFields().get(0).getValue().contains("...") || builder.getFields().get(1).getValue().contains("...") || builder.getFields().get(2).getValue().contains("..."))
-            row = ActionRow.of(Button.of(ButtonStyle.SUCCESS, "approve_choose_role|" + info.toString(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПодтвердить выборㅤㅤㅤㅤㅤㅤㅤㅤ").withDisabled(true));
+            row = ActionRow.of(Button.of(ButtonStyle.SUCCESS, "approve_choose_role|" + info.toString(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПідтвердити вибірㅤㅤㅤㅤㅤㅤㅤㅤ").withDisabled(true));
         else
-            row = ActionRow.of(Button.of(ButtonStyle.SUCCESS, "approve_choose_role|" + info.toString(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПодтвердить выборㅤㅤㅤㅤㅤㅤㅤㅤ").withDisabled(false));
+            row = ActionRow.of(Button.of(ButtonStyle.SUCCESS, "approve_choose_role|" + info.toString(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПідтвердити вибірㅤㅤㅤㅤㅤㅤㅤㅤ").withDisabled(false));
 
 
 
@@ -101,5 +101,6 @@ public class PurchaseSelectOptions extends ListenerAdapter implements PatriotLis
                 row
         ).queue();
     }
+
 
 }

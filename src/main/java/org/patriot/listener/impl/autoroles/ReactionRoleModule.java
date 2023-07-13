@@ -25,8 +25,8 @@ public class ReactionRoleModule extends ListenerAdapter implements PatriotListen
 
         Role role = event.getGuild().getRoleById(event.getValues().get(0));
         event.getGuild().addRoleToMember(event.getMember(), role).queue(action ->
-                event.replyEmbeds(new EmbedBuilder().setDescription("```Добро пожаловать на проект \"Патриот\"!```\n" +
-                                "Роль " + role.getAsMention() + " получена!")
+                event.replyEmbeds(new EmbedBuilder().setDescription("```Раді тебе бачити на проекті \"Патріот\"!```\n" +
+                                "Роль " + role.getAsMention() + " отримана!")
                         .setColor(3553599).build()).setEphemeral(true).queue()
         );
     }

@@ -48,9 +48,9 @@ public class PurchaseCheckPayment extends ListenerAdapter implements PatriotList
         String time = String.valueOf(60*60*24*30);
 
         switch (duration) {
-            case "1 месяц": time = String.valueOf(60*60*24*30); break;
-            case "1 год": time = String.valueOf(60*60*24*30*12); break;
-            case "Пожизнено": time = String.valueOf(60*60*24*30*12*10); break;
+            case "1 місяць": time = String.valueOf(60*60*24*30); break;
+            case "1 рік": time = String.valueOf(60*60*24*30*12); break;
+            case "Пожиттєво": time = String.valueOf(60*60*24*30*12*10); break;
         }
 
         try {
@@ -58,22 +58,22 @@ public class PurchaseCheckPayment extends ListenerAdapter implements PatriotList
 
 
             switch (orderStatus) {
-                case "created": event.reply("Ваш заказ еще не оплачен, оплатите и нажмите на эту кнопку еще раз.").setEphemeral(true).queue(); break;
-                case "processing": event.reply("Ваш заказ в процессе оплаты, подождите минуту и нажмите на эту кнопку еще раз.").setEphemeral(true).queue(); break;
-                case "declined ": event.reply("Ваш заказ отменен.").setEphemeral(true).queue(); break;
-                case "expired": event.reply("Закончилось время ожидания оплаты.").setEphemeral(true).queue(); break;
+                case "created": event.reply("Ваше замовлення ще не сплачене, сплатіть і натисніть цю кнопку знову.").setEphemeral(true).queue(); break;
+                case "processing": event.reply("Ваше замовлення обробляється, зачекайте хвилину і натисніть цю кнопку знову.").setEphemeral(true).queue(); break;
+                case "declined ": event.reply("Ваше замовлення скасоване.").setEphemeral(true).queue(); break;
+                case "expired": event.reply("Термін очікування оплати закінчився.").setEphemeral(true).queue(); break;
 
 
                 case "approved": {
                     Server server = getServerByName(serverName);
                     server.exec("sm_addvip \"" + SteamClient.convertSteamID64ToSteamID(Long.parseLong(steamId)) + "\" \"" + getPrivilegeByName(privilegeName).getGroup() + "\" \""+ time +"\"");
                     event.getUser().openPrivateChannel().queue(privateChannel ->
-                            privateChannel.sendMessageEmbeds(new EmbedBuilder(event.getMessage().getEmbeds().get(0)).setDescription("`Чек сведетельствующий о покупке привилегии.`").build()).queue(act ->
-                                    event.editMessageEmbeds(new EmbedBuilder().setDescription("```Поздравляем вам! Вы получили привелегию. Чек мы отослали вам в ЛС```").build()).setComponents(
-                                            ActionRow.of(Button.of(ButtonStyle.LINK, act.getJumpUrl(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤПосмотреть чекㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"))
+                            privateChannel.sendMessageEmbeds(new EmbedBuilder(event.getMessage().getEmbeds().get(0)).setDescription("`Квиток, що підтверджує придбання привілею.`").build()).queue(act ->
+                                    event.editMessageEmbeds(new EmbedBuilder().setDescription("```Вітаємо! Ви отримали привілегію. Квиток ми вислали вам у приватні повідомлення```").build()).setComponents(
+                                            ActionRow.of(Button.of(ButtonStyle.LINK, act.getJumpUrl(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤПереглянути квитокㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"))
                                     ).queue(then ->
                                             Main.getJda().getGuildById(GUILD_ID).getTextChannelById(LOGGING_CHANNEL_ID)
-                                                    .sendMessageEmbeds(new EmbedBuilder(event.getMessage().getEmbeds().get(0)).setDescription("`Чек сведетельствующий о покупке привилегии.`\nКупил привилегию: " + event.getUser().getAsMention()).build())
+                                                    .sendMessageEmbeds(new EmbedBuilder(event.getMessage().getEmbeds().get(0)).setDescription("`Квиток, що підтверджує придбання привілею.`\nПридбав привілегію: " + event.getUser().getAsMention()).build())
                                                     .queue()
                                     )
                             )
@@ -82,14 +82,14 @@ public class PurchaseCheckPayment extends ListenerAdapter implements PatriotList
                 }
 
 
-               default: event.reply("Неизвесная ошибка, обратитесь к администрации").setEphemeral(true).queue();break;
+                default: event.reply("Невідома помилка, зверніться до адміністрації").setEphemeral(true).queue();break;
             }
 
 
 
         } catch (Exception e) {
             Logger.ds("fondy", e.getMessage() + " " + e.getStackTrace());
-            event.reply("Что-то пошло не так, обратитесь к администрации.").setEphemeral(true).queue();
+            event.reply("Щось пішло не так, зверніться до адміністрації.").setEphemeral(true).queue();
         }
 
     }
@@ -106,9 +106,9 @@ public class PurchaseCheckPayment extends ListenerAdapter implements PatriotList
 
     private String getMoneyToPay(Privilege privilege, String duration) throws Exception {
         switch (duration) {
-            case "1 месяц": return String.valueOf(privilege.getPrice().getMonthPrice());
-            case "1 год": return String.valueOf(privilege.getPrice().getYearPrice());
-            case "Пожизненно": return String.valueOf(privilege.getPrice().getLifetimePrice());
+            case "1 місяць": return String.valueOf(privilege.getPrice().getMonthPrice());
+            case "1 рік": return String.valueOf(privilege.getPrice().getYearPrice());
+            case "Пожиттєво": return String.valueOf(privilege.getPrice().getLifetimePrice());
             default: throw new Exception("duration " + duration + " not found");
         }
     }
@@ -128,6 +128,7 @@ public class PurchaseCheckPayment extends ListenerAdapter implements PatriotList
 
         throw new Exception("Server " + name + " not found");
     }
+
 
 
 

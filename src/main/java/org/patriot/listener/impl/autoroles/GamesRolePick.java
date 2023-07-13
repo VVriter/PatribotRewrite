@@ -25,7 +25,7 @@ public class GamesRolePick extends ListenerAdapter implements PatriotListener, C
         final Role role = event.getGuild().getRoleById(event.getValues().get(0));
 
         event.getGuild().addRoleToMember(event.getMember(), role).queue(action ->
-                event.reply("Выдал тебе роль " + role.getAsMention()).setEphemeral(true).queue()
+                event.reply("Видав тобі роль " + role.getAsMention()).setEphemeral(true).queue()
         );
 
     }

@@ -36,30 +36,30 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
 
 
     private final MessageEmbed adminEmbed = new EmbedBuilder()
-            .setTitle("• Открыт набор на роль Админа!")
-            .setDescription("<:admin:1040238108035260457><@&978385182849630249> - данная должность отвечает за порядок на сервере и выдает наказания нарушителям.")
+            .setTitle("• Відкрита вакансія на роль Адміна!")
+            .setDescription("<:admin:1040238108035260457><@&978385182849630249> - ця посада відповідає за порядок на сервері та накладає покарання на порушників.")
             .setColor(3454719)
-            .addField("Что тебя ждет:","<:bluedot:1040199768774823966> Оплата работы в виде скинов\n" +
-                    "<:bluedot:1040199768774823966> Система рангов Администрации\n" +
-                    "<:bluedot:1040199768774823966> Возможность получить ценный опыт и карьерный рост\n" +
-                    "<:bluedot:1040199768774823966> Уникальная роль в дискорде", false)
-            .addField("Требование:", "<:bluedot:1040199768774823966> Возрастное ограничение: 15+\n" +
-                    "<:bluedot:1040199768774823966> Опыт на других проектах - приветствуется!\n" +
-                    "<:bluedot:1040199768774823966> Наиграть на сервере: 35 часов\n" +
-                    "<:bluedot:1040199768774823966> Отсутствие Блокировки в сообществе STEAM\n" +
-                    "<:bluedot:1040199768774823966> 300+ наигранных часов в CS:GO",false)
-            .addField("Заинтересовала данная должность?","<:bluedot:1040199768774823966> В таком случае, нажимай на кнопку ниже!",false)
-            .setFooter("Если ваша заявка соответствует нашим требованиям, то мы вам напишем!")
+            .addField("Що тебе чекає:", "<:bluedot:1040199768774823966> Оплата роботи у вигляді скинів\n" +
+                    "<:bluedot:1040199768774823966> Система рангів Адміністрації\n" +
+                    "<:bluedot:1040199768774823966> Можливість отримати цінний досвід та кар'єрний ріст\n" +
+                    "<:bluedot:1040199768774823966> Унікальна роль у дискорді", false)
+            .addField("Вимоги:", "<:bluedot:1040199768774823966> Вікове обмеження: 15+\n" +
+                    "<:bluedot:1040199768774823966> Досвід на інших проектах - вітається!\n" +
+                    "<:bluedot:1040199768774823966> Грати на сервері: 35 годин\n" +
+                    "<:bluedot:1040199768774823966> Відсутність блокування в спільноті STEAM\n" +
+                    "<:bluedot:1040199768774823966> 300+ годин гри в CS:GO", false)
+            .addField("Зацікавила ця посада?", "<:bluedot:1040199768774823966> Тоді натисни на кнопку нижче!", false)
+            .setFooter("Якщо ваша заявка відповідає нашим вимогам, ми вам напишемо!")
             .setImage("https://cdn.discordapp.com/attachments/976095234180120576/1040281513524207646/Comp_2_2.gif").build();
 
 
     private final MessageEmbed eventMakerEmbed = new EmbedBuilder()
-            .setTitle("• Открыт набор на роль Инвентера!")
-            .setDescription("<:inventmaker:1040238121742241853><@&979035645248938034> - данная должность отвечает за организацию \nмножества мероприятий и ивентов!")
-            .addField("От тебя потребуется:","<:bluedot:1040199768774823966> Приятное времяпровождение в дружном коллективе.\n<:bluedot:1040199768774823966> Возможность получить ценный опыт и карьерный рост.\n<:bluedot:1040199768774823966> Зарплата в виде серверной валюты, нитро, реальные деньги,\n роли и многое другое!",false)
-            .addField("Что тебя ждет:","<:bluedot:1040199768774823966>Приятное времяпровождение в дружном коллективе.\n<:bluedot:1040199768774823966> Возможность получить ценный опыт и карьерный рост.\n<:bluedot:1040199768774823966> Зарплата в виде серверной валюты, нитро, реальные деньги,\nроли и многое другое!",false)
-            .addField("Заинтересовала данная должность?","<:bluedot:1040199768774823966>В таком случае, нажимай на кнопку ниже!",false)
-            .setFooter("Если ваша заявка соответствует нашим требованиям, то мы вам напишем!")
+            .setTitle("• Відкрита вакансія на роль Інвентора!")
+            .setDescription("<:inventmaker:1040238121742241853><@&979035645248938034> - ця посада відповідає за організацію \nбагатьох заходів та івентів!")
+            .addField("Від тебе знадобиться:", "<:bluedot:1040199768774823966> Приємний час проведення в дружньому колективі.\n<:bluedot:1040199768774823966> Можливість отримати цінний досвід та кар'єрний ріст.\n<:bluedot:1040199768774823966> Зарплата у вигляді серверної валюти, нітро, реальні гроші,\nролі та багато іншого!", false)
+            .addField("Чого тебе чекає:", "<:bluedot:1040199768774823966> Приємний час проведення в дружньому колективі.\n<:bluedot:1040199768774823966> Можливість отримати цінний досвід та кар'єрний ріст.\n<:bluedot:1040199768774823966> Зарплата у вигляді серверної валюти, нітро, реальні гроші,\nролі та багато іншого!", false)
+            .addField("Зацікавила ця посада?", "<:bluedot:1040199768774823966> Тоді натисни на кнопку нижче!", false)
+            .setFooter("Якщо ваша заявка відповідає нашим вимогам, ми вам напишемо!")
             .setImage("https://cdn.discordapp.com/attachments/963699910501367848/1043969475717898390/1231231231.gif").build();
 
     @Override
@@ -80,11 +80,11 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
 
         //Admin
         if (event.getButton().getId().equals("stuff_looking_create_req_for_be_admin"))
-            event.replyModal(getModal(1, "Запрос на администратора", "Ссылка на стим", "Ссылка на Телеграм (для связи)", "Ник в дискорде", "Сколько вам лет?", "Сколько отыграли на сервере?").build()).queue();
+            event.replyModal(getModal(1, "Запит на адміністратора", "Посилання на Steam", "Посилання на Telegram (для зв'язку)", "Ім'я користувача в Discord", "Скільки вам років?", "Скільки годин ви зіграли на сервері?").build()).queue();
 
-        //Contentmaker
+        //Контентмейкер
         if (event.getButton().getId().equals("stuff_looking_create_req_for_be_contentmaker"))
-            event.replyModal(getModal(2, "Запрос на eventmaker", "Ссылка на стим", "Ссылка на Телеграм (для связи)", "Ник в дискорде", "Сколько вам лет?", "Сколько отыграли на сервере?").build()).queue();
+            event.replyModal(getModal(2, "Запит на інвентора", "Посилання на Steam", "Посилання на Telegram (для зв'язку)", "Ім'я користувача в Discord", "Скільки вам років?", "Скільки годин ви зіграли на сервері?").build()).queue();
 
     }
 
@@ -93,15 +93,15 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
         super.onModalInteraction(event);
         if (!event.getModalId().startsWith("stuff_modal")) return;
 
-        //Generating ticket message
+        //Створення повідомлення заявки
         StringBuilder buffer = new StringBuilder();
         EmbedBuilder builder = new EmbedBuilder();
         String stuff;
 
-        if (event.getModalId().contains("eventmaker")) stuff = "инвентера";
-        else stuff = "админа";
+        if (event.getModalId().contains("eventmaker")) stuff = "інвентора";
+        else stuff = "адміна";
 
-        builder.setTitle("Запрос от " + event.getUser().getAsTag() + " " + "на должность" + " " + stuff);
+        builder.setTitle("Запит від " + event.getUser().getAsTag() + " на посаду " + stuff);
 
         for (ModalMapping mapping : event.getValues()) {
             buffer.append("`")
@@ -114,30 +114,31 @@ public class StuffLookingModule extends ListenerAdapter implements PatriotListen
         }
         builder.setDescription(buffer);
 
-        //Creating ticket
+        //Створення заявки
         event.getGuild().getCategoryById(LOOKING_FOR_STUFF_CATEGORY_ID)
-                .createTextChannel(event.getUser().getName() + "-ожидает")
+                .createTextChannel(event.getUser().getName() + "-очікує")
 
-                //For @everyone closed channel
+                //Для @everyone закритого каналу
                 .addPermissionOverride(event.getGuild().getPublicRole(),null, EnumSet.of(Permission.VIEW_CHANNEL))
-                //For @suppoert role
+                //Для ролі @support
                 .addPermissionOverride(event.getGuild().getRoleById(SUPPORTERS_ROLE_ID), EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND), null)
-                //For requester
+                //Для запитувача
                 .addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND), null)
 
                 .queue(ticketChannel ->
-                    event.replyEmbeds(new EmbedBuilder().setTitle("Запрос создан, нажмите на кнопку ниже, чтобы перейти").build())
-                            .addActionRow(Button.of(ButtonStyle.LINK, ticketChannel.getJumpUrl(), "Перейти в канал")).setEphemeral(true).queue(action ->
-                                   ticketChannel.sendMessageEmbeds(builder.build())
-                                           .addActionRow(
-                                                   Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
-                                                   Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Открыть тикет!"),
-                                                   Button.of(ButtonStyle.DANGER,"delete_ticket", "Удалить тикет")
-                                           )
-                                           .queue()
-                            )
+                        event.replyEmbeds(new EmbedBuilder().setTitle("Запит створено, натисніть на кнопку нижче, щоб перейти").build())
+                                .addActionRow(Button.of(ButtonStyle.LINK, ticketChannel.getJumpUrl(), "Перейти до каналу")).setEphemeral(true).queue(action ->
+                                        ticketChannel.sendMessageEmbeds(builder.build())
+                                                .addActionRow(
+                                                        Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрити заявку!"),
+                                                        Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Відкрити заявку!"),
+                                                        Button.of(ButtonStyle.DANGER,"delete_ticket", "Видалити заявку")
+                                                )
+                                                .queue()
+                                )
                 );
     }
+
 
     //Cool utility to create modals faster
     private Modal.Builder getModal(int tag, String name, String... vals) {

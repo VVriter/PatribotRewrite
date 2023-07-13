@@ -34,7 +34,7 @@ public class TelegramListener extends ListenerAdapter implements PatriotListener
     public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
         super.onButtonInteraction(event);
         if (event.getButton().getId().equals("tgvip"))
-            event.replyModal(getModal("Получить бесплатную випку!", "Ссылка на стим", "Ваш ник в Discord", "Название сервера CS:GO", "Ссылка на Telegram аккаунт").build()).queue();
+            event.replyModal(getModal("Отримати безкоштовну VIP", "Посилання на Steam", "Ваш нік в Discord", "Назва сервера CS:GO", "Посилання на Telegram аккаунт").build()).queue();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class TelegramListener extends ListenerAdapter implements PatriotListener
         super.onModalInteraction(event);
         if (!event.getModalId().startsWith("tgvip_modal")) return;
 
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         for (ModalMapping mapping : event.getValues()) {
             stringBuffer.append("`")
                     .append(mapping.getId())
@@ -57,29 +57,30 @@ public class TelegramListener extends ListenerAdapter implements PatriotListener
                 .setDescription(stringBuffer.toString())
                 .setThumbnail(event.getUser().getAvatarUrl());
 
-        event.getGuild().getCategoryById(TELEGRAM_VIP_CATEGORY_ID).createTextChannel(event.getUser().getName() + "-ожидает")
-                //For @everyone closed channel
+        event.getGuild().getCategoryById(TELEGRAM_VIP_CATEGORY_ID).createTextChannel(event.getUser().getName() + "-очікує")
+                //Для @everyone закритого каналу
                 .addPermissionOverride(event.getGuild().getPublicRole(),null, EnumSet.of(Permission.VIEW_CHANNEL))
-                //For @suppoert role
+                //Для ролі @support
                 .addPermissionOverride(event.getGuild().getRoleById(SUPPORTERS_ROLE_ID), EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND), null)
-                //For requester
+                //Для запитувача
                 .addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND), null)
                 .queue(channel -> {
                     event.replyEmbeds(
                             new EmbedBuilder()
-                                    .setTitle("Запрос создан, нажмите на кнопку ниже, чтобы перейти")
+                                    .setTitle("Запит створено, натисніть на кнопку нижче, щоб перейти")
                                     .build()
-                    ).addActionRow(Button.of(ButtonStyle.LINK, channel.getJumpUrl(), "Перейти в канал")).setEphemeral(true).queue(action ->
+                    ).addActionRow(Button.of(ButtonStyle.LINK, channel.getJumpUrl(), "Перейти до каналу")).setEphemeral(true).queue(action ->
                             channel.sendMessageEmbeds(builder.build()).setContent(event.getUser().getAsMention())
                                     .addActionRow(
-                                            Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
-                                            Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Открыть тикет!"),
-                                            Button.of(ButtonStyle.DANGER,"delete_ticket", "Удалить тикет")
+                                            Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрити заявку!"),
+                                            Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Відкрити заявку!"),
+                                            Button.of(ButtonStyle.DANGER,"delete_ticket", "Видалити заявку")
                                     )
                                     .queue()
                     );
                 });
     }
+
 
     //Cool utility to create modals faster
     private Modal.Builder getModal(String name, String... vals) {

@@ -1,8 +1,6 @@
 package org.patriot.commands.message.autoroles;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.entities.emoji.EmojiUnion;
@@ -12,7 +10,6 @@ import org.patriot.Constants;
 import org.patriot.commands.ChatCommand;
 import org.patriot.lib.discohook.DiscohookUtil;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ReactionRolesCallerCommand implements ChatCommand, Constants {

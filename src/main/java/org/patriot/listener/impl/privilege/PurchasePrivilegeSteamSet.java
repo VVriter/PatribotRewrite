@@ -41,7 +41,7 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
         if (!event.getButton().getId().startsWith("approve_choose_role")) return;
 
         final JSONObject info = new JSONObject(event.getButton().getId().split("\\|")[1]);
-        event.replyModal(getModal("Введите ссылку на ваш стим", info, "Ссылка").build()).queue();
+        event.replyModal(getModal("Введіть посилання на ваш стім", info, "Посилання").build()).queue();
     }
 
 
@@ -53,7 +53,7 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
         try {
             SteamClient steamClient = new SteamClient(event.getValues().get(0).getAsString());
             final EmbedBuilder builder = new EmbedBuilder(event.getMessage().getEmbeds().get(0));
-            builder.setFooter("Стим: " + steamClient.getSteamUser().getSteamId() + " | " + steamClient.getSteamUser().getName(), steamClient.getSteamUser().getAvatarUrl());
+            builder.setFooter("Стім: " + steamClient.getSteamUser().getSteamId() + " | " + steamClient.getSteamUser().getName(), steamClient.getSteamUser().getAvatarUrl());
 
 
             final JSONObject info = new JSONObject(event.getModalId().split("\\|")[1]);
@@ -68,17 +68,17 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
                     .setCurrency(Currency.UAH)
                     .setLang(Lang.RUSSIAN)
                     .setMoneyAmount(price)
-                    .setDescription("Оплата привилегии " + privilege.getName() + " на серевере " + server.getName())
+                    .setDescription("Оплата привілегії " + privilege.getName() + " на сервері " + server.getName())
                     .build();
 
             event.editMessageEmbeds(builder.build())
                     .setComponents(
-                            ActionRow.of(Button.of(ButtonStyle.LINK, fondyClient.generatePaymentUrl(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤОплатитьㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")),
-                            ActionRow.of(Button.of(ButtonStyle.SECONDARY, "pc|" + fondyClient.getOrderId() + "|" + server.getName() + "|" + privilege.getName() + "|" + info.getString("d") + "|" + steamClient.getSteamUser().getSteamId(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПодтвердить оплатуㅤㅤㅤㅤㅤㅤㅤㅤㅤ"))
+                            ActionRow.of(Button.of(ButtonStyle.LINK, fondyClient.generatePaymentUrl(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤОплатитиㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")),
+                            ActionRow.of(Button.of(ButtonStyle.SECONDARY, "pc|" + fondyClient.getOrderId() + "|" + server.getName() + "|" + privilege.getName() + "|" + info.getString("d") + "|" + steamClient.getSteamUser().getSteamId(), "ㅤㅤㅤㅤㅤㅤㅤㅤㅤПідтвердити оплатуㅤㅤㅤㅤㅤㅤㅤㅤㅤ"))
                     )
                     .queue();
         } catch (Exception e) {
-            event.reply("Вы ввели НЕВЕРНЫЕ данные. Пожалуйста, введите нажмите на кнопку еще раз и введите правильные данные.")
+            event.reply("Ви ввели НЕВІРНІ дані. Будь ласка, натисніть на кнопку ще раз і введіть правильні дані.")
                     .setEphemeral(true).queue();
         }
     }
@@ -87,12 +87,13 @@ public class PurchasePrivilegeSteamSet extends ListenerAdapter implements Patrio
     @SneakyThrows
     private String getMoneyToPay(Privilege privilege, String duration) {
         switch (duration) {
-            case "1 месяц": return String.valueOf(privilege.getPrice().getMonthPrice());
-            case "1 год": return String.valueOf(privilege.getPrice().getYearPrice());
-            case "Пожизненно": return String.valueOf(privilege.getPrice().getLifetimePrice());
+            case "1 місяць": return String.valueOf(privilege.getPrice().getMonthPrice());
+            case "1 рік": return String.valueOf(privilege.getPrice().getYearPrice());
+            case "Пожиттєво": return String.valueOf(privilege.getPrice().getLifetimePrice());
             default: throw new Exception("duration " + duration + " not found");
         }
     }
+
 
     @SneakyThrows
     private Privilege getPrivilegeByName(String name) {

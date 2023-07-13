@@ -48,17 +48,17 @@ public class PurchaseModuleListener extends ListenerAdapter implements PatriotLi
             _public
     };
 
-    public static final StringSelectMenu.Builder privilegeSelectMenu  = StringSelectMenu.create("privilege_select_menu").setPlaceholder("Выберите привилегию");
-    public static final StringSelectMenu.Builder privilegeDurationSelectMenu  = StringSelectMenu.create("privilege_duration_select_menu").setPlaceholder("Выберите длительность");
-    public static final StringSelectMenu.Builder privilegeServerSelectMenu  = StringSelectMenu.create("privilege_server_select_menu").setPlaceholder("Выберите сервер");
+    public static final StringSelectMenu.Builder privilegeSelectMenu  = StringSelectMenu.create("privilege_select_menu").setPlaceholder("Виберіть привілегію");
+    public static final StringSelectMenu.Builder privilegeDurationSelectMenu  = StringSelectMenu.create("privilege_duration_select_menu").setPlaceholder("Виберіть тривалість");
+    public static final StringSelectMenu.Builder privilegeServerSelectMenu  = StringSelectMenu.create("privilege_server_select_menu").setPlaceholder("Виберіть сервер");
 
     public PurchaseModuleListener() {
         Stream.of(privileges).forEach(privilege -> privilegeSelectMenu.addOption(privilege.getName(), privilege.toJson().toString()));
         Stream.of(servers).forEach(server -> privilegeServerSelectMenu.addOption(server.getName(), server.toJson().toString()));
 
-        privilegeDurationSelectMenu.addOption("1 месяц", "1");
-        privilegeDurationSelectMenu.addOption("1 год", "2");
-        privilegeDurationSelectMenu.addOption("Пожизнено", "3");
+        privilegeDurationSelectMenu.addOption("1 місяць", "1");
+        privilegeDurationSelectMenu.addOption("1 рік", "2");
+        privilegeDurationSelectMenu.addOption("Пожиттєво", "3");
     }
 
     @Override
@@ -68,11 +68,11 @@ public class PurchaseModuleListener extends ListenerAdapter implements PatriotLi
 
 
         final EmbedBuilder builder = new EmbedBuilder()
-                .setDescription("Привет " + event.getUser().getAsMention() + "!\n" +
-                        "`Заполните пожалуйста эту форму, используя кнопки под этим`\n`сообщением, чтобы приобрести привилегию.`")
-                .addField("Привилегия", "`Не выбрано...`", true)
-                .addField("Длительность", "`Не выбрано...`", true)
-                .addField("Сервер", "`Не выбрано...`", true);
+                .setDescription("Привіт " + event.getUser().getAsMention() + "!\n" +
+                        "`Будь ласка, заповніть цю форму за допомогою кнопок під цим`\n`повідомленням, щоб придбати привілегію.`")
+                .addField("Привілегія", "`Не вибрано...`", true)
+                .addField("Тривалість", "`Не вибрано...`", true)
+                .addField("Сервер", "`Не вибрано...`", true);
 
         event.replyEmbeds(builder.build())
                 .addActionRow(privilegeSelectMenu.build())
@@ -81,4 +81,5 @@ public class PurchaseModuleListener extends ListenerAdapter implements PatriotLi
                 .setEphemeral(true)
                 .queue();
     }
+
 }

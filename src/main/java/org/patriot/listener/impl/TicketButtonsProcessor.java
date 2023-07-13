@@ -38,9 +38,9 @@ public class TicketButtonsProcessor extends ListenerAdapter implements PatriotLi
                 try {
                     final Member member = event.getGuild().getMemberById(userId);
                     event.getChannel().asTextChannel().getManager().putPermissionOverride(member,null, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL)).queue(action ->
-                            event.reply("Модератор " + event.getMember().getAsMention() + " закрыл тикет.").queue(act ->
-                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " закрыл тикет.\n Инфа о тикете:\n`Имя канала:` " + event.getChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", ""), actioned -> {
-                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", "") + "-закрыт")
+                            event.reply("Модератор " + event.getMember().getAsMention() + " закрив тікет.").queue(act ->
+                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " закрив тікет.\n Інфа про тікет:\n`Ім'я канала:` " + event.getChannel().getName().replace("відкритий", "").replace("очікує", "").replace("закритий", ""), actioned -> {
+                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("відкритий", "").replace("очікує", "").replace("закритий", "") + "-закритий")
                                                 .queue();
                                     })
                             )
@@ -56,9 +56,9 @@ public class TicketButtonsProcessor extends ListenerAdapter implements PatriotLi
                 try {
                     final Member member = event.getGuild().getMemberById(userId);
                     event.getChannel().asTextChannel().getManager().putPermissionOverride(member, EnumSet.of(Permission.MESSAGE_SEND, Permission.VIEW_CHANNEL), null).queue(action ->
-                            event.reply("Модератор  " + event.getMember().getAsMention() + " открыл тикет.").queue(act ->
-                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " открыл тикет.\n Инфа о тикете:\n`Имя канала:` " + event.getChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", ""), actioned -> {
-                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", "") + "-открыт")
+                            event.reply("Модератор  " + event.getMember().getAsMention() + " відкрив тікет.").queue(act ->
+                                    Logger.ds("ticket-management", "Модератор " + event.getMember().getAsMention() + " відкрив тікет.\n Інфа про тікет:\n`І'мя канала:` " + event.getChannel().getName().replace("открыт", "").replace("ожидает", "").replace("закрыт", ""), actioned -> {
+                                        event.getChannel().asTextChannel().getManager().setName(event.getChannel().asTextChannel().getName().replace("открыт", "").replace("відкритий", "").replace("очікує", "").replace("закритий", "") + "-відкритий")
                                                 .queue();
                                     })
                             )
@@ -74,7 +74,7 @@ public class TicketButtonsProcessor extends ListenerAdapter implements PatriotLi
                 event.getChannel().delete().queue();
 
 
-        } else event.reply("Вы не можете использывать эту кнопку, вы не администратор").setEphemeral(true).queue();
+        } else event.reply("Ви не можете використовувати цю кнопку, ви не адміністратор.").setEphemeral(true).queue();
 
     }
 

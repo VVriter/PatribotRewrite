@@ -40,13 +40,13 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
 
         //I'm just creating modals here for each setting in drop down menu
         switch (event.getValues().get(0)) {
-            case "1": event.replyModal(getModal("Жалоба на админа", "Ник админа", "Ссылка на ваш стим", "Описание ситуации").build()).queue(); break;
-            case "2": event.replyModal(getModal("Связь с руководством", "Ваш ник", "Описание").build()).queue(); break;
-            case "3": event.replyModal(getModal("Пополнение баланса", "Ссылка на стим профиль", "Сумма", "Дополнительная информация").build()).queue(); break;
-            case "4": event.replyModal(getModal("Задать вопрос", "Заголовок вопроса", "Описание").build()).queue(); break;
-            case "5": event.replyModal(getModal("Прием багов", "Ссылка на стим", "Название сервера", "Описание").build()).queue(); break;
-            case "6": event.replyModal(getModal("Снятие мута", "Ссылка на стим", "Описание").build()).queue(); break;
-            case "7": event.replyModal(getModal("Снятие бана",  "Ссылка на стим", "Описание").build()).queue(); break;
+            case "1": event.replyModal(getModal("Скарга на адміна", "Нік адміна", "Посилання на ваш стім", "Опис ситуації").build()).queue(); break;
+            case "2": event.replyModal(getModal("Звязок з керівництвом", "Ваш нік", "Опис").build()).queue(); break;
+            case "3": event.replyModal(getModal("Поповнення балансу", "Посилання на стім профіль", "Сумма", "Доп інфа").build()).queue(); break;
+            case "4": event.replyModal(getModal("Задати питання", "Заголовок питання", "Опис").build()).queue(); break;
+            case "5": event.replyModal(getModal("Прийом багів", "Посилання на стім", "Назва сервера", "Опис").build()).queue(); break;
+            case "6": event.replyModal(getModal("Зняття муту", "Посилання на стім", "Опис").build()).queue(); break;
+            case "7": event.replyModal(getModal("Зняття бану",  "СПосилання на стім", "Опис").build()).queue(); break;
         }
     }
 
@@ -65,12 +65,12 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
         }
 
         final EmbedBuilder embed = new EmbedBuilder()
-                .setTitle("Запрос на " + event.getModalId().replace("reports_modal ","") + " " + "от" + " " + event.getUser().getAsTag())
+                .setTitle("Запит на " + event.getModalId().replace("reports_modal ","") + " " + "від" + " " + event.getUser().getAsTag())
                 .setThumbnail(event.getUser().getAvatarUrl())
                 .setDescription(info.toString());
 
         event.getGuild().getCategoryById(TEXNICAL_SUPPORT_CATEGORY_ID)
-                .createTextChannel(event.getUser().getName() + "-" + "ожидает")
+                .createTextChannel(event.getUser().getName() + "-" + "очікує")
 
 
                 //For @everyone closed channel
@@ -83,18 +83,18 @@ public class SupportModule extends ListenerAdapter implements PatriotListener, C
                 .queue(tciketChannel ->
                     tciketChannel.sendMessageEmbeds(embed.build())
                             .addActionRow(
-                                    Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрыть тикет!"),
-                                    Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Открыть тикет!"),
-                                    Button.of(ButtonStyle.DANGER,"delete_ticket", "Удалить тикет")
+                                    Button.of(ButtonStyle.DANGER,"close_ticket " + event.getMember().getId(),"Закрити тікет!"),
+                                    Button.of(ButtonStyle.PRIMARY,"open_ticket " + event.getMember().getId(),"Відкрити тікет!"),
+                                    Button.of(ButtonStyle.DANGER,"delete_ticket", "Видалити тікет")
                             )
                             .queue(message -> {
                                         event.replyEmbeds(
                                                 new EmbedBuilder()
-                                                        .setTitle("Запрос создан, нажмите на кнопку ниже, чтобы перейти")
+                                                        .setTitle("Запит створений, натисніть на кнопку нище, щоб перейти")
                                                         .build()
                                         ).addActionRow(Button.of(ButtonStyle.LINK, tciketChannel.getJumpUrl(), "Перейти в канал")).setEphemeral(true).queue(rest ->
-                                                message.reply("В настоящие время все Модераторы заняты. Ожидайте, наша команда трудиться ради победы." +
-                                                                " Слава Украине\uD83C\uDDFA\uD83C\uDDE6!")
+                                                message.reply("В данний момент всі Модератори зайняті. Очікуйте, наша команда працює на перемогу." +
+                                                                " Слава Україні \uD83C\uDDFA\uD83C\uDDE6!")
                                                         .queue()
                                         );
                                     }

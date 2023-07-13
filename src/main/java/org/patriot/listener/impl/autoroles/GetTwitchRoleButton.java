@@ -26,7 +26,7 @@ public class GetTwitchRoleButton extends ListenerAdapter implements PatriotListe
 
         final Role role = event.getGuild().getRoleById(TWITCH_ROLE_ID);
         event.getGuild().addRoleToMember(event.getMember(), role).queue(action ->
-            event.reply("Вам выдана роль " + role.getAsMention()).setEphemeral(true).queue()
+            event.reply("Видав тобі роль " + role.getAsMention()).setEphemeral(true).queue()
         );
     }
 
